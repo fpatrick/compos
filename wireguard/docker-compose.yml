@@ -1,0 +1,25 @@
+version: "3"
+services:
+  wireguard:
+    image: lscr.io/linuxserver/wireguard
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID={$PUID}
+      - PGID={$PGID}
+      - TZ=${TZ}
+      #- SERVERURL=${MY_URL} #optional
+      - SERVERPORT={$WIREGUARD_PORT} #optional
+      - PEERS=2 #optional
+      - PEERDNS=auto #optional
+      #- INTERNAL_SUBNET=10.13.13.0 #optional
+    volumes:
+      - ${DOCKER_PATH}/wireguard/config:/config
+      #- /lib/modules:/lib/modules
+    ports:
+      - {$WIREGUARD_PORT}:51820/udp
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+    restart: unless-stopped
