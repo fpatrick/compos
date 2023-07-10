@@ -19,7 +19,7 @@ services:
       - ${DOCKER_PATH}/wireguard/config:/config
       #- /lib/modules:/lib/modules
     ports:
-      - {$WIREGUARD_PORT}:51820/udp
+      - "{$WIREGUARD_PORT}:51820/udp"
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
