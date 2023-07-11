@@ -1,0 +1,54 @@
+version: "3"
+services:
+    tautulli:
+        image: lscr.io/linuxserver/tautulli
+        container_name: tautulli
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${DOCKER_PATH}/tautulli/config:/config
+            - ${DOCKER_PATH}/plex/Library/Application Support/Plex Media Server/Logs:/logs
+        ports:
+            - "${TAUTULLI_PORT}:8181"
+        restart: unless-stopped
+    plex:
+        image: plexinc/pms-docker:plexpass
+        container_name: plex
+        environment:
+            - PLEX_UID=1000
+            - PLEX_GID=1000
+            - TZ=${TZ}
+            #- UMASK=${UMASK}
+            - PLEX_CLAIM=${PLEX_CLAIM}
+            - ADVERTISE_IP=${PLEX_ADVERTISE_IP}
+            - ALLOWED_NETWORKS=${PLEX_ALLOWED_NETWORKS}
+        volumes:
+            - ${DOCKER_PATH}/plex:/config
+            - ${MEDIA_DISK}:/media
+            - ${DATA}:/ssd
+            - ${MEDIA_DISK}/transcode:/transcode
+        ports:
+            - "${PLEX_PORT1}:32400/tcp"
+            - "${PLEX_PORT2}:1900/udp"
+            - "${PLEX_PORT3}:3005/tcp"
+            - "${PLEX_PORT4}:5353/udp"
+            - "${PLEX_PORT5}:8324/tcp"
+            - "${PLEX_PORT6}:32410/udp"
+            - "${PLEX_PORT7}:32412/udp"
+            - "${PLEX_PORT8}:32413/udp"
+            - "${PLEX_PORT9}:32414/udp"
+            - "${PLEX_PORT10}:32469/tcp"
+        devices:
+            - /dev/dri:/dev/dri
+        restart: unless-stopped
+    plexautolanguages:
+        image: remirigal/plex-auto-languages:latest
+        container_name: PlexAutoLanguages
+        environment:
+        - TZ=${TZ}
+        volumes:
+        # make sure you have a file named 'config.yaml' in the 'config' dir
+        - ${DOCKER_PATH}/plexautolanguages/:/config
+        restart: unless-stopped

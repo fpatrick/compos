@@ -2,3 +2,7 @@ wireguard/.env
 cloudflare/.env
 .DS_Store
 media/.env
+arr/.env
+.gitignore
+plex/.env
+downloaders/.env

@@ -1,0 +1,55 @@
+version: "3"
+services:
+    sonarr:
+        image: cr.hotio.dev/hotio/sonarr
+        container_name: sonarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK=${UMASK}
+        volumes:
+            - ${DOCKER_PATH}/sonarr:/config
+            #- ${MEDIA_DISK}:/data
+            - ${DATA}:/data
+        ports:
+            - "${SONARR_PORT}:8989"
+        restart: unless-stopped
+    radarr:
+        image: cr.hotio.dev/hotio/radarr
+        container_name: radarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK=${UMASK}
+        volumes:
+            - ${DOCKER_PATH}/radarr:/config
+            - ${DATA}:/data
+        ports:
+            - "${RADARR_PORT}:7878"
+        restart: unless-stopped
+    prowlarr:
+        image: cr.hotio.dev/hotio/prowlarr:testing
+        container_name: prowlarr
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - UMASK=${UMASK}
+        volumes:
+            - ${DOCKER_PATH}/prowlarr:/config
+        ports:
+            - "${PROWLARR_PORT}:9696"
+        restart: unless-stopped
+    addarr:
+        container_name: addarr
+        image: waterboy1602/addarr
+        restart: "no"
+        network_mode: host
+        volumes:
+        - ${DOCKER_PATH}/addarr/config.yaml:/app/config.yaml:ro
+        - ${DOCKER_PATH}/addarr/chatid.txt:/app/chatid.txt:rw
+        - ${DOCKER_PATH}/addarr/admin.txt:/app/admin.txt:ro
+        # - ${DOCKER_PATH}/addarr/allowlist.txt:/app/allowlist.txt:ro
+        # - ${DOCKER_PATH}/addarr/logs:/app/logs:rw
