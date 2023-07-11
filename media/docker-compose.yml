@@ -65,7 +65,7 @@ services:
             - "${PLEX_PORT4}:5353/udp"
             - "${PLEX_PORT5}:8324/tcp"
             - "${PLEX_PORT6}:32410/udp"
-            - "${PLEX_PORT7}32412/udp"
+            - "${PLEX_PORT7}:32412/udp"
             - "${PLEX_PORT8}:32413/udp"
             - "${PLEX_PORT9}:32414/udp"
             - "${PLEX_PORT10}:32469/tcp"
