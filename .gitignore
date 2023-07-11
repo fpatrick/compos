@@ -1,3 +1,4 @@
 wireguard/.env
 cloudflare/.env
 .DS_Store
+media/.env
