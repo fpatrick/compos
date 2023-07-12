@@ -1,0 +1,27 @@
+version: "3"
+services:
+    Omada:
+        container_name: omada-controller
+        image: mbentley/omada-controller:latest
+        volumes:
+            - ${DOCKER_PATH}/omada/data:/opt/tplink/EAPController/data
+            - ${DOCKER_PATH}/omada/work:/opt/tplink/EAPController/work
+            - ${DOCKER_PATH}/omada/logs:/opt/tplink/EAPController/logs
+        environment:
+            - MANAGE_HTTP_PORT=${OMADA_PORT1}
+            - MANAGE_HTTPS_PORT=${OMADA_PORT2}
+            - PORTAL_HTTP_PORT=${OMADA_PORT1}
+            - PORTAL_HTTPS_PORT=${OMADA_PORT3}
+            - SHOW_SERVER_LOGS=true
+            - SHOW_MONGODB_LOGS=false
+            - SSL_CERT_NAME="tls.crt"
+            - SSL_KEY_NAME="tls.key"
+            - TZ=${TZ}
+        ports:
+            - "${OMADA_PORT1}:8088"
+            - "${OMADA_PORT2}:8043"
+            - "${OMADA_PORT3}:8843"
+            - "${OMADA_PORT4}:27001/udp"
+            - "${OMADA_PORT5}:29810/udp"
+            - "${OMADA_PORT6}:${OMADA_PORT6}"
+        restart: unless-stopped

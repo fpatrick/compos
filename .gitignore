@@ -6,3 +6,4 @@ arr/.env
 .gitignore
 plex/.env
 downloaders/.env
+omada/.env
