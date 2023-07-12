@@ -1,0 +1,9 @@
+version: "3"
+services:
+    clouflare:
+        container_name: cloudflare
+        image: cloudflare/cloudflared:latest
+        environment:
+            - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+        command: ["tunnel", "--no-autoupdate", "run"]
+        restart: unless-stopped

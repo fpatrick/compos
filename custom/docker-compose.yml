@@ -1,0 +1,10 @@
+version: "3"
+services:
+    mybot:
+        build: .
+        ports:
+            - "80:0905"
+        environment:
+            - OPENAI_API_KEY=sk-${OPENAI_API_KEY}
+            - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+        command: ["python", "main.py"]

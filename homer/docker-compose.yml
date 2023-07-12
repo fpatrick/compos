@@ -1,0 +1,14 @@
+version: "3"
+services:
+    homer:
+        image: b4bz/homer:latest
+        container_name: homer
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${DOCKER_PATH}/homer:/www/assets
+        ports:
+            - "${HOMER_PORT}:8080"
+        restart: unless-stopped

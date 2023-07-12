@@ -7,3 +7,8 @@ arr/.env
 plex/.env
 downloaders/.env
 omada/.env
+custom/.env
+.gitignore
+syncthing/.env
+homer/.env
+watchtower/.env

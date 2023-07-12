@@ -1,0 +1,21 @@
+version: "3"
+services:
+    syncthing:
+        image: lscr.io/linuxserver/syncthing
+        container_name: syncthing
+        #hostname: syncthing #optional
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+        volumes:
+            - ${DOCKER_PATH}/syncthing:/config
+            - ${DOCKER_PATH}/compose:/data1
+            - ${DOCKER_PATH}/homer:/data2
+            #- /path/to/data2:/data2
+        ports:
+            - "${SYNCTHING_PORT1}:8384"
+            - "${SYNCTHING_PORT2}:22000/tcp"
+            - "${SYNCTHING_PORT3}:22000/udp"
+            - "${SYNCTHING_PORT4}:21027/udp"
+        restart: unless-stopped
