@@ -3,7 +3,6 @@ services:
     homarr:
         image: ghcr.io/ajnart/homarr:latest
         container_name: homarr
-        environment:
         volumes:
             - ${DOCKER_PATH}/homarr/configs:/app/data/configs
             - ${DOCKER_PATH}/icons:/app/public/icons
