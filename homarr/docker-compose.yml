@@ -1,0 +1,12 @@
+version: "3"
+services:
+    homarr:
+        image: ghcr.io/ajnart/homarr:latest
+        container_name: homarr
+        environment:
+        volumes:
+            - ${DOCKER_PATH}/homarr/configs:/app/data/configs
+            - ${DOCKER_PATH}/homarr/configs:/app/public/icons
+        ports:
+            - "${HOMARR_PORT}:7575"
+        restart: unless-stopped
