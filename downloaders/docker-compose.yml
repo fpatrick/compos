@@ -9,7 +9,7 @@ services:
             - TZ=${TZ}
         volumes:
             - ${DOCKER_PATH}/nzbget:/config
-            - ${MEDIA_DISK}/usenet:/data/nzbget/usenet
+            - ${DATA}/usenet:/data/usenet
         ports:
             - "${NZBGET_PORT}:6789"
         restart: unless-stopped
