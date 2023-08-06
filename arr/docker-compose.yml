@@ -10,8 +10,8 @@ services:
             - UMASK=${UMASK}
         volumes:
             - ${DOCKER_PATH}/sonarr:/config
-            #- ${MEDIA_DISK}:/data
-            - ${DATA}:/data
+            - ${MEDIA_DISK}:/data
+            #- ${DATA}:/data
         ports:
             - "${SONARR_PORT}:8989"
         restart: unless-stopped
