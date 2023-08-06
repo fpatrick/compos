@@ -23,7 +23,7 @@ services:
         volumes:
             - ${DOCKER_PATH}/sabnzbd:/config
             - ${DATA}/sabnzbd/movies:/data/sabnzbd/movies
-            - ${MEDIA_DISK}/sabnzbd/tv:/data/sabzbd/tv
+            - ${MEDIA_DISK}/sabnzbd/tv:/data/sabnzbd/tv
         ports:
             - "${SABNZBD_PORT}:8080"
         restart: unless-stopped
