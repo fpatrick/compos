@@ -9,7 +9,7 @@ services:
             - TZ=${TZ}
         volumes:
             - ${DOCKER_PATH}/nzbget:/config
-            - ${DATA}/usenet:/data/nzbget/usenet
+            - ${MEDIA_DISK}/usenet:/data/nzbget/usenet
         ports:
             - "${NZBGET_PORT}:6789"
         restart: unless-stopped
@@ -22,7 +22,8 @@ services:
             - TZ=${TZ}
         volumes:
             - ${DOCKER_PATH}/sabnzbd:/config
-            - ${DATA}/usenet:/data/usenet
+            - ${DATA}/sabnzbd/movies:/data/movies
+            - ${MEDIA_DISK}/sabnzbd/tv:/data/tv
         ports:
             - "${SABNZBD_PORT}:8080"
         restart: unless-stopped
