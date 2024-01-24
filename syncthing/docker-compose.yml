@@ -12,6 +12,7 @@ services:
             - ${DOCKER_PATH}/syncthing:/config
             - ${DOCKER_PATH}/compose:/data1
             - ${DOCKER_PATH}/homer:/data2
+            - ${DOCKER_PATH}/homepage:/data3
             #- /path/to/data2:/data2
         ports:
             - "${SYNCTHING_PORT1}:8384"
