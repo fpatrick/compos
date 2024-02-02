@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  statech:
+      image: itzg/minecraft-server
+      container_name: statech
+      environment:
+          PUID: 1000
+          PGID: 1000
+          EULA: "true"
+          MOD_PLATFORM: AUTO_CURSEFORGE
+          CF_API_KEY: ${API} # allocate from https://console.curseforge.com/
+          CF_FORCE_SYNCHRONIZE: "true"
+          CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/statech-industry/files/4776880
+          MEMORY: 4G
+          PVP: "FALSE"
+          ONLINE_MODE: "FALSE"
+          GAMEMODE: "survival"
+          DIFFICULTY: "normal"
+      volumes:
+          - "/mnt/data/minecraft/statech:/data"
+          #- "/mnt/data/packs:/packs"
+      ports:
+          - "25566:25565"
+        # To attach 
+      stdin_open: true
+      tty: true
+      restart: unless-stopped
