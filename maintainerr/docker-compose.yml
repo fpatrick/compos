@@ -1,0 +1,15 @@
+version: "3"
+services:
+    maintainerr:
+        image: ghcr.io/jorenn92/maintainerr:latest
+        container_name: maintainerr
+        user: ${PUID}:${PUID}
+        environment:
+            - TZ=${TZ}
+            - UMASK=${UMASK}
+        volumes:
+            - ${DOCKER_PATH}/maintainerr:/opt/data
+            #- ${DATA}:/data
+        ports:
+            - "6246:6246"
+        restart: unless-stopped
