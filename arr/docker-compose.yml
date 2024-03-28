@@ -1,7 +1,7 @@
 version: "3"
 services:
     sonarr:
-        image: cr.hotio.dev/hotio/sonarr
+        image: ghcr.io/hotio/sonarr
         container_name: sonarr
         environment:
             - PUID=${PUID}
@@ -16,7 +16,7 @@ services:
             - "${SONARR_PORT}:8989"
         restart: unless-stopped
     radarr:
-        image: cr.hotio.dev/hotio/radarr
+        image: ghcr.io/hotio/radarr
         container_name: radarr
         environment:
             - PUID=${PUID}
@@ -30,7 +30,7 @@ services:
             - "${RADARR_PORT}:7878"
         restart: unless-stopped
     prowlarr:
-        image: cr.hotio.dev/hotio/prowlarr:testing
+        image: ghcr.io/hotio/prowlarr
         container_name: prowlarr
         environment:
             - PUID=${PUID}
