@@ -10,5 +10,6 @@ services:
       - 3000:3000
     volumes:
       - ${DOCKER_PATH}/homepage:/app/config # Make sure your local config directory exists
+      - ${DOCKER_PATH}/homepage/public:/app/public
       - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
     restart: unless-stopped
