@@ -12,3 +12,14 @@ services:
         ports:
             - "${FRESHRSS_PORT}:80"
         restart: unless-stopped
+
+    fullfeedrss:
+        image: 'heussd/fivefilters-full-text-rss:latest'
+        environment:
+            # Leave empty to disable admin section
+            - FTR_ADMIN_PASSWORD=
+        volumes:
+            - '${DOCKER_PATH}/fullfeedrss:/var/www/html/cache/rss'
+        ports:
+            - '${FULLFEED_PORT}:80'
+        restart: unless-stopped
