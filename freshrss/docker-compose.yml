@@ -46,6 +46,6 @@ services:
         volumes:
             - ${DOCKER_PATH}/miniflux-db:/var/lib/postgresql/data
         healthcheck:
-        test: ["CMD", "pg_isready", "-U", "miniflux"]
-        interval: 10s
-        start_period: 30s
+            test: ["CMD", "pg_isready", "-U", "miniflux"]
+            interval: 10s
+            start_period: 30s
