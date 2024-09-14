@@ -29,10 +29,9 @@ services:
         ports:
         - "${MINIFLUXDB_PORT}:8080"
         depends_on:
-            miniflux-db:
-                condition: service_healthy
+            - miniflux-db
         environment:
-            - DATABASE_URL=postgres://${MINIFLUXDB_USER}:${MINIFLUXDB_PASS}@db/miniflux?sslmode=disable
+            - DATABASE_URL=postgres://${MINIFLUXDB_USER}:${MINIFLUXDB_PASS}@miniflux-db/miniflux?sslmode=disable
             - RUN_MIGRATIONS=1
             - CREATE_ADMIN=1
             - ADMIN_USERNAME=${MINIFLUX_USER}
