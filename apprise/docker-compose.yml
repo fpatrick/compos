@@ -1,0 +1,17 @@
+version: "3"
+services:
+
+    apprise-api:
+    image: lscr.io/linuxserver/apprise-api:latest
+    container_name: apprise-api
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - APPRISE_ATTACH_SIZE=0 #optional
+    volumes:
+      - ${DOCKER_PATH}/apprise-api/config:/config
+      - ${DOCKER_PATH}/apprise-api/attachments:/attachments #optional
+    ports:
+      - ${APPRISE_PORT}:8000
+    restart: unless-stopped
