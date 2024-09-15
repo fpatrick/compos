@@ -7,7 +7,7 @@ services:
             - PUID=${PUID}
             - PGID=${PGID}
             - TZ=${TZ}
-            - APPRISE_ATTACH_SIZE=0 #optional
+            #- APPRISE_ATTACH_SIZE=0 #optional
         volumes:
             - ${DOCKER_PATH}/apprise-api/config:/config
             - ${DOCKER_PATH}/apprise-api/attachments:/attachments #optional
