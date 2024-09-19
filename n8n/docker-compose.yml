@@ -1,0 +1,11 @@
+version: "3"
+services:
+    n8n:
+        image: docker.n8n.io/n8nio/n8n
+        container_name: n8n
+
+        volumes:
+            - ${DOCKER_PATH}/n8n:/home/node/.n8n
+        ports:
+            - ${N8N_PORT}:5678
+        restart: unless-stopped
