@@ -1,0 +1,35 @@
+version: "3"
+services:
+    apprise-api:
+        image: lscr.io/linuxserver/apprise-api:latest
+        container_name: apprise-api
+        environment:
+            - PUID=${PUID}
+            - PGID=${PGID}
+            - TZ=${TZ}
+            - APPRISE_ATTACH_SIZE=10 #optional
+        volumes:
+            - ${DOCKER_PATH}/apprise-api/config:/config
+            - ${DOCKER_PATH}/apprise-api/attachments:/attachments #optional
+        ports:
+            - ${APPRISE_PORT}:8000
+        restart: unless-stopped
+
+services:
+    ntfy:
+        image: binwiederhier/ntfy
+        environment:
+            NTFY_BASE_URL: http://ntfy.example.com #required for cache
+            NTFY_CACHE_FILE: /var/lib/ntfy/cache.db
+            NTFY_ATTACHMENT_TOTAL_SIZE_LIMIT: "1G"
+            #NTFY_AUTH_FILE: /var/lib/ntfy/auth.db
+            #NTFY_AUTH_DEFAULT_ACCESS: deny-all
+            #NTFY_BEHIND_PROXY: true
+            NTFY_ATTACHMENT_CACHE_DIR: /var/lib/ntfy/attachments
+            #NTFY_ENABLE_LOGIN: true
+            NTFY_UPSTREAM_BASE_URL: https://ntfy.sh # IOS 
+        volumes:
+            - ${DOCKER_PATH}/ntfy:/var/lib/ntfy
+        ports:
+            - ${NTFY_PORT}:80
+        restart: unless-stopped

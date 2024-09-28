@@ -42,14 +42,3 @@ services:
         ports:
             - "${PROWLARR_PORT}:9696"
         restart: unless-stopped
-    addarr:
-        container_name: addarr
-        image: waterboy1602/addarr
-        restart: "no"
-        network_mode: host
-        volumes:
-        - ${DOCKER_PATH}/addarr/config.yaml:/app/config.yaml:ro
-        - ${DOCKER_PATH}/addarr/chatid.txt:/app/chatid.txt:rw
-        - ${DOCKER_PATH}/addarr/admin.txt:/app/admin.txt:ro
-        # - ${DOCKER_PATH}/addarr/allowlist.txt:/app/allowlist.txt:ro
-        # - ${DOCKER_PATH}/addarr/logs:/app/logs:rw
