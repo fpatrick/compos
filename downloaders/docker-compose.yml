@@ -13,6 +13,17 @@ services:
         ports:
             - "${NZBGET_PORT}:6789"
         restart: unless-stopped
+        labels:
+            - homepage.group=Download
+            - homepage.name=Nzbget
+            - homepage.icon=nzbget.png
+            - homepage.href=http://${SERVER_IP}:${NZBGET_PORT}
+            - homepage.description=Usenet file downloader
+            - homepage.widget.type=nzbget
+            - homepage.widget.url=http://${SERVER_IP}:${NZBGET_PORT}
+            - homepage.widget.username=${NZBGET_USERNAME}
+            - homepage.widget.password=${NZBGET_PASSWORD}
+
     sabnzbd:
         image: lscr.io/linuxserver/sabnzbd
         container_name: sabnzbd
@@ -27,6 +38,16 @@ services:
         ports:
             - "${SABNZBD_PORT}:8080"
         restart: unless-stopped
+        labels:
+            - homepage.group=Download
+            - homepage.name=Sabnzbd
+            - homepage.icon=sabnzbd.png
+            - homepage.href=http://${SERVER_IP}:${SABNZBD_PORT}
+            - homepage.description=Usenet file downloader
+            - homepage.widget.type=sabnzbt
+            - homepage.widget.url=http://${SERVER_IP}:${SABNZBD_PORT}
+            - homepage.widget.key=${SABNZBD_API}
+
     qbittorrent:
         image: lscr.io/linuxserver/qbittorrent
         container_name: qbittorrent
@@ -43,3 +64,9 @@ services:
             - "${QBITTORRENT_PORT2}:${QBITTORRENT_PORT2}"
             - "${QBITTORRENT_PORT2}:${QBITTORRENT_PORT2}/udp"
         restart: unless-stopped
+        labels:
+            - homepage.group=Media
+            - homepage.name=Qbittorrent
+            - homepage.icon=qbittorrent.png
+            - homepage.href=http://${SERVER_IP}:${QBITTORRENT_PORT1}
+            - homepage.description=Torrent file downloader
