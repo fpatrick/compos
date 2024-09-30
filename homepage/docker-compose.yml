@@ -1,5 +1,17 @@
 version: "3.3"
 services:
+  dockerproxy:
+    image: ghcr.io/tecnativa/docker-socket-proxy:latest
+    container_name: dockerproxy
+    environment:
+      - CONTAINERS=1 # Allow access to viewing containers
+      - POST=0 # Disallow any POST operations (effectively read-only)
+    ports:
+      - 127.0.0.1:${PROXY_PORT}:2375
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Mounted as read-only
+    restart: unless-stopped
+
   homepage:
     image: ghcr.io/gethomepage/homepage:latest
     container_name: homepage
@@ -11,5 +23,4 @@ services:
     volumes:
       - ${DOCKER_PATH}/homepage:/app/config # Make sure your local config directory exists
       - ${DOCKER_PATH}/homepage/images:/app/public/images
-      - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
     restart: unless-stopped
