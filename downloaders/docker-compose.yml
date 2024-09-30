@@ -65,7 +65,7 @@ services:
             - "${QBITTORRENT_PORT2}:${QBITTORRENT_PORT2}/udp"
         restart: unless-stopped
         labels:
-            - homepage.group=Media
+            - homepage.group=Download
             - homepage.name=Qbittorrent
             - homepage.icon=qbittorrent.png
             - homepage.href=http://${SERVER_IP}:${QBITTORRENT_PORT1}
