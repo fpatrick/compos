@@ -13,6 +13,13 @@ services:
         ports:
             - "${TAUTULLI_PORT}:8181"
         restart: unless-stopped
+        labels:
+            - homepage.group=Media
+            - homepage.name=Tautulli
+            - homepage.icon=tautulli.png
+            - homepage.href=http://${SERVER_IP}:${TAUTULLI_PORT}
+            - homepage.description=Track Plex stats
+    
     plex:
         image: plexinc/pms-docker:plexpass
         container_name: plex
