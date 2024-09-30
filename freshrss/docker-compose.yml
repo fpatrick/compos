@@ -1,17 +1,5 @@
 version: "3"
 services:
-    freshrss:
-        image: lscr.io/linuxserver/freshrss:latest
-        container_name: freshrss
-        environment:
-            - PUID=${PUID}
-            - PGID=${PGID}
-            - TZ=${TZ}
-        volumes:
-            - ${DOCKER_PATH}/freshrss:/config
-        ports:
-            - "${FRESHRSS_PORT}:80"
-        restart: unless-stopped
 
     fullfeedrss:
         image: 'heussd/fivefilters-full-text-rss:latest'
