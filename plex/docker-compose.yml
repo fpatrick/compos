@@ -43,6 +43,13 @@ services:
         devices:
             - /dev/dri:/dev/dri
         restart: unless-stopped
+        labels:
+            - homepage.group=Media
+            - homepage.name=Plex
+            - homepage.icon=plex.png
+            - homepage.href=http://${SERVER_IP}:${PLEX_PORT1}/web/
+            - homepage.description=Stream Media
+
     plexautolanguages:
         image: remirigal/plex-auto-languages:latest
         container_name: PlexAutoLanguages
