@@ -7,7 +7,7 @@ services:
       - CONTAINERS=1 # Allow access to viewing containers
       - POST=0 # Disallow any POST operations (effectively read-only)
     ports:
-      - 127.0.0.1:${PROXY_PORT}:2375
+      - 127.0.0.1:2375:2375
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro # Mounted as read-only
     restart: unless-stopped
