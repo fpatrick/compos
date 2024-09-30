@@ -14,7 +14,7 @@ services:
         labels:
             - homepage.group=RSS/Feed
             - homepage.name=FullFeed-RSS
-            - homepage.icon=fullfeedrss.png
+            - homepage.icon=mdi-alpha-f-box-outline
             - homepage.href=http://${SERVER_IP}:${FULLFEED_PORT}
             - homepage.description=Convert text to RSS
 
