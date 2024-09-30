@@ -15,6 +15,6 @@ services:
         labels:
             - homepage.group=Automation
             - homepage.name=Maintainerr
-            - homepage.icon=mdi-size-m
+            - homepage.icon=mdi-size-m # https://pictogrammers.com/library/mdi/   mdi-NAME
             - homepage.href=http://${SERVER_IP}:6246
             - homepage.description=Auto delete watched media
