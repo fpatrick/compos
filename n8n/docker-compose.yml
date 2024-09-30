@@ -5,6 +5,8 @@ services:
         container_name: n8n
         environment:
             - N8N_SECURE_COOKIE=false #disabled for access localhost, not recommended
+            - EXECUTIONS_DATA_PRUNE=true # Activate automatic data pruning
+            - EXECUTIONS_DATA_MAX_AGE=168 # Number of hours after execution that n8n deletes data
         volumes:
             - ${DOCKER_PATH}/n8n:/home/node/.n8n
         ports:
