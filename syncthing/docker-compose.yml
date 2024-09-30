@@ -20,3 +20,9 @@ services:
             - "${SYNCTHING_PORT3}:22000/udp"
             - "${SYNCTHING_PORT4}:21027/udp"
         restart: unless-stopped
+        labels:
+            - homepage.group=Automation
+            - homepage.name=Syncthing
+            - homepage.icon=syncthing.png
+            - homepage.href=http://${SERVER_IP}:${SYNCTHING_PORT1}
+            - homepage.description=File synchronization tool

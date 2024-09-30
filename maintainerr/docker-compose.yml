@@ -12,3 +12,9 @@ services:
         ports:
             - "6246:6246"
         restart: unless-stopped
+        labels:
+            - homepage.group=Automation
+            - homepage.name=Maintainerr
+            - homepage.icon=maintainerr.png
+            - homepage.href=http://${SERVER_IP}:6246
+            - homepage.description=Auto delete watched media

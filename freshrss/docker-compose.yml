@@ -11,6 +11,12 @@ services:
         ports:
             - '${FULLFEED_PORT}:80'
         restart: unless-stopped
+        labels:
+            - homepage.group=RSS/Feed
+            - homepage.name=FullFeed-RSS
+            - homepage.icon=fullfeedrss.png
+            - homepage.href=http://${SERVER_IP}:${FULLFEED_PORT}
+            - homepage.description=Convert text to RSS
 
     miniflux:
         image: miniflux/miniflux:latest
@@ -24,6 +30,13 @@ services:
             - CREATE_ADMIN=1
             - ADMIN_USERNAME=${MINIFLUX_USER}
             - ADMIN_PASSWORD=${MINIFLUX_PASS}
+        labels:
+            - homepage.group=RSS/Feed
+            - homepage.name=Miniflux
+            - homepage.icon=miniflux.png
+            - homepage.href=http://${SERVER_IP}:${MINIFLUXDB_PORT}
+            - homepage.description=Minimalist RSS reader
+
     miniflux-db:
         image: postgres:15
         environment:
