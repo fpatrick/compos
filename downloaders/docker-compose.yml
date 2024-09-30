@@ -44,7 +44,7 @@ services:
             - homepage.icon=sabnzbd.png
             - homepage.href=http://${SERVER_IP}:${SABNZBD_PORT}
             - homepage.description=Usenet file downloader
-            - homepage.widget.type=sabnzbt
+            - homepage.widget.type=sabnzbd
             - homepage.widget.url=http://${SERVER_IP}:${SABNZBD_PORT}
             - homepage.widget.key=${SABNZBD_API}
 
