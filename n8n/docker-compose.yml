@@ -12,3 +12,9 @@ services:
         ports:
             - ${N8N_PORT}:5678
         restart: unless-stopped
+        labels:
+            - homepage.group=Automation
+            - homepage.name=n8n
+            - homepage.icon=n8n.png
+            - homepage.href=http://${SERVER_IP}:${N8N_PORT}
+            - homepage.description=Automate with workflows
