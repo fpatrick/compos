@@ -15,6 +15,17 @@ services:
         ports:
             - "${SONARR_PORT}:8989"
         restart: unless-stopped
+        labels:
+            - homepage.group=Media
+            - homepage.name=Sonarr
+            - homepage.icon=sonarr.png
+            - homepage.href=http://${SERVER_IP}:${SONARR_PORT}
+            - homepage.description=Automate TV shows
+            - homepage.widget.type=sonarr
+            - homepage.widget.url=http://${SERVER_IP}:${SONARR_PORT}
+            - homepage.widget.key=${SONARR_API}
+            #- homepage.widget.fields=["field1","field2"] # optional
+
     radarr:
         image: ghcr.io/hotio/radarr
         container_name: radarr
@@ -29,6 +40,16 @@ services:
         ports:
             - "${RADARR_PORT}:7878"
         restart: unless-stopped
+        labels:
+            - homepage.group=Media
+            - homepage.name=Radarr
+            - homepage.icon=radarr.png
+            - homepage.href=http://${SERVER_IP}:${RADARR_PORT}
+            - homepage.description=Automate Movies
+            - homepage.widget.type=radarr
+            - homepage.widget.url=http://${SERVER_IP}:${RADARR_PORT}
+            - homepage.widget.key=${RADARR_API}
+
     prowlarr:
         image: ghcr.io/hotio/prowlarr
         container_name: prowlarr
@@ -42,3 +63,9 @@ services:
         ports:
             - "${PROWLARR_PORT}:9696"
         restart: unless-stopped
+        labels:
+            - homepage.group=Media
+            - homepage.name=Prowlarr
+            - homepage.icon=prowlarr.png
+            - homepage.href=http://${SERVER_IP}:${PROWLARR_PORT}
+            - homepage.description=Manage indexers
