@@ -14,3 +14,9 @@ services:
         ports:
             - ${APPRISE_PORT}:8000
         restart: unless-stopped
+        labels:
+            - homepage.group=RSS/Feed
+            - homepage.name=Apprise-api
+            - homepage.icon=apprise.png
+            - homepage.href=http://${SERVER_IP}:${APPRISE_PORT}
+            - homepage.description=Notification api
