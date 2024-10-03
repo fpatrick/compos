@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+    rclone:
+        image: rclone/rclone:latest
+        restart: unless-stopped
+        ports:
+            - 5572:5572  # Port for Rclone Web GUI
+        volumes:
+            - ${DOCKER_PATH}/rclone:/config/rclone  # Mount your Rclone config directory
+        labels:
+            - homepage.group=Misc.
+            - homepage.name=Rclone
+            - homepage.icon=rclone.png
+            - homepage.href=http://${SERVER_IP}:5572
+            - homepage.description=Connect to cloud services
