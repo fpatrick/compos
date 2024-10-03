@@ -33,7 +33,7 @@ services:
             # Mount path for browsing mounted snaphots
             - ${KOPIA_REPO_PATH}/tmp/dir:/tmp:shared
             # Rclone
-            - ${DOCKER_PATH}/rclone/rclone_bin:/rclone/bin
+            - rclone_bin:/rclone/bin
             - ${DOCKER_PATH}/rclone:/rclone/config
         labels:
             - homepage.group=Automation
