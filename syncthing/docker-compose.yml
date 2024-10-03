@@ -11,7 +11,7 @@ services:
         volumes:
             - ${DOCKER_PATH}/syncthing:/config
             - ${DOCKER_PATH}/compose:/data1
-            - ${DOCKER_PATH}/homer:/data2
+            - ${OB_PATH}:/ob-path
             - ${DOCKER_PATH}/homepage:/data3
             #- /path/to/data2:/data2
         ports:
