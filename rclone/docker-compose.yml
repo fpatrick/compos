@@ -7,7 +7,7 @@ services:
             - 5572:5572  # Port for Rclone Web GUI
         volumes:
             - ${DOCKER_PATH}/rclone:/config/rclone  # Mount your Rclone config directory
-        command: rcd --rc-addr :5572 --rc-web-gui --config /config/rclone.conf
+        command: rcd --rc-addr :5572 --rc-web-gui --rc-user ${RCLONE_USER} --rc-pass ${RCLONE_PASSWORD}
         labels:
             - homepage.group=Misc.
             - homepage.name=Rclone
