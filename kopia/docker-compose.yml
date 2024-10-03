@@ -29,9 +29,9 @@ services:
             # Mount local folders to snapshot
             - ${OB_PATH}:/data:ro
             # Mount repository location
-            - ${KOPIA_REPO_PATH}/dir:/repository
+            ##- ${KOPIA_REPO_PATH}/dir:/repository
             # Mount path for browsing mounted snaphots
-            - ${KOPIA_REPO_PATH}/tmp/dir:/tmp:shared
+            ##- ${KOPIA_REPO_PATH}/tmp/dir:/tmp:shared
             # Rclone
             - ${DOCKER_PATH}/rclone:/rclone/config
         labels:
