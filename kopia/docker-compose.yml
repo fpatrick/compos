@@ -20,6 +20,7 @@ services:
             # Set repository password
             KOPIA_PASSWORD: ${KOPIA_PASSWORD}
             USER: ${KOPIA_USER}
+            RCLONE_CONFIG: /rclone/config/rclone.conf
         volumes:
             # Mount local folders needed by kopia
             - ${KOPIA_PATH}/config/dir:/app/config
@@ -31,9 +32,31 @@ services:
             - ${KOPIA_REPO_PATH}/dir:/repository
             # Mount path for browsing mounted snaphots
             - ${KOPIA_REPO_PATH}/tmp/dir:/tmp:shared
+            # Rclone
+            - ${DOCKER_PATH}/rclone/rclone_bin:/rclone/bin
+            - ${DOCKER_PATH}/rclone:/rclone/config
         labels:
             - homepage.group=Automation
             - homepage.name=Kopia
             - homepage.icon=kopia.png
             - homepage.href=http://${SERVER_IP}:51515
             - homepage.description=Backup
+
+    rclone:
+        image: rclone/rclone:latest
+        restart: unless-stopped
+        ports:
+            - 5572:5572  # Port for Rclone Web GUI
+        volumes:
+            - ${DOCKER_PATH}/rclone:/config/rclone  # Mount your Rclone config directory
+            - ${DOCKER_PATH}/rclone/rclone_bin:/usr/local/bin #mount bin for kopia use
+        command: rcd --rc-addr :5572 --rc-web-gui --rc-user ${RCLONE_USER} --rc-pass ${RCLONE_PASSWORD}
+        labels:
+            - homepage.group=Misc.
+            - homepage.name=Rclone
+            - homepage.icon=rclone.png
+            - homepage.href=http://${SERVER_IP}:5572
+            - homepage.description=Connect to cloud services
+
+volumes:
+    rclone_bin:
