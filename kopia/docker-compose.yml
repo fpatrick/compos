@@ -49,7 +49,7 @@ services:
             - 5572:5572  # Port for Rclone Web GUI
         volumes:
             - ${DOCKER_PATH}/rclone:/config/rclone  # Mount your Rclone config directory
-            - ${DOCKER_PATH}/rclone/rclone_bin:/usr/local/bin #mount bin for kopia use
+            - rclone_bin:/usr/local/bin #mount bin for kopia use
         command: rcd --rc-addr :5572 --rc-web-gui --rc-user ${RCLONE_USER} --rc-pass ${RCLONE_PASSWORD}
         labels:
             - homepage.group=Misc.
