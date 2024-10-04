@@ -26,7 +26,8 @@ services:
             - ${KOPIA_PATH}/cache/:/app/cache
             - ${KOPIA_PATH}/logs/:/app/logs
             # Mount local folders to snapshot
-            - ${OB_PATH}:/data:ro
+            - ${OB_PATH}:/ob:ro
+            - ${DCK_PATH}:/dck:ro
             # Mount repository location
             ##- ${KOPIA_REPO_PATH}/dir:/repository
             # Mount path for browsing mounted snaphots
