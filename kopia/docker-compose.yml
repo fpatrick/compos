@@ -22,9 +22,9 @@ services:
             USER: ${KOPIA_USER}
         volumes:
             # Mount local folders needed by kopia
-            - ${KOPIA_PATH}/config/dir:/app/config
-            - ${KOPIA_PATH}/cache/dir:/app/cache
-            - ${KOPIA_PATH}/logs/dir:/app/logs
+            - ${KOPIA_PATH}/config/:/app/config
+            - ${KOPIA_PATH}/cache/:/app/cache
+            - ${KOPIA_PATH}/logs/:/app/logs
             # Mount local folders to snapshot
             - ${OB_PATH}:/data:ro
             # Mount repository location
