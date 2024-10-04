@@ -20,7 +20,6 @@ services:
             # Set repository password
             KOPIA_PASSWORD: ${KOPIA_PASSWORD}
             USER: ${KOPIA_USER}
-            RCLONE_CONFIG: /rclone/config/rclone.conf
         volumes:
             # Mount local folders needed by kopia
             - ${KOPIA_PATH}/config/dir:/app/config
@@ -33,7 +32,7 @@ services:
             # Mount path for browsing mounted snaphots
             ##- ${KOPIA_REPO_PATH}/tmp/dir:/tmp:shared
             # Rclone
-            - ${DOCKER_PATH}/rclone:/rclone/config
+            - ${DOCKER_PATH}/rclone:/app/rclone
         labels:
             - homepage.group=Automation
             - homepage.name=Kopia
