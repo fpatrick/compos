@@ -16,7 +16,7 @@ services:
         - homepage.group=Misc.
         - homepage.name=Hoarder
         - homepage.icon=hoarder.png
-        - homepage.href=http://${SERVER_IP}:3000
+        - homepage.href=http://${SERVER_IP}:${WEB_PORT}
         - homepage.description=Bookmarker Manager      
   hoarder-chrome:
     image: gcr.io/zenika-hub/alpine-chrome:123
