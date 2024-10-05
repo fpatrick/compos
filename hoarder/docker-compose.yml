@@ -6,7 +6,7 @@ services:
     volumes:
       - ${DOCKER_PATH}/hoarder/data:/data
     ports:
-      - 3000:3000
+      - ${WEB_PORT}:3000
     environment:
       MEILI_ADDR: http://hoarder-meilisearch:7700
       BROWSER_WEB_URL: http://hoarder-chrome:9222
