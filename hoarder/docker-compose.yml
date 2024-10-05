@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   hoarder-web:
-    image: ghcr.io/hoarder-app/hoarder:release
+    image: ghcr.io/hoarder-app/hoarder:${HOARDER_VERSION:-release}
     restart: unless-stopped
     volumes:
       - ${DOCKER_PATH}/hoarder/data:/data
