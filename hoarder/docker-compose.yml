@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  hoarder-web:
+    image: ghcr.io/hoarder-app/hoarder:latest
+    restart: unless-stopped
+    volumes:
+      - ${DOCKER_PATH}/hoarder/data:/data
+    ports:
+      - 3000:3000
+    environment:
+      MEILI_ADDR: http://hoarder-meilisearch:7700
+      BROWSER_WEB_URL: http://hoarder-chrome:9222
+      # OPENAI_API_KEY: ...
+      DATA_DIR: /data
+  hoarder-chrome:
+    image: gcr.io/zenika-hub/alpine-chrome:123
+    restart: unless-stopped
+    command:
+      - --no-sandbox
+      - --disable-gpu
+      - --disable-dev-shm-usage
+      - --remote-debugging-address=0.0.0.0
+      - --remote-debugging-port=9222
+      - --hide-scrollbars
+  hoarder-meilisearch:
+    image: getmeili/meilisearch:v1.6
+    restart: unless-stopped
+    environment:
+      MEILI_NO_ANALYTICS: "true"
+    volumes:
+      - ${DOCKER_PATH}/hoarder/meilisearch:/meili_data
