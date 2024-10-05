@@ -12,6 +12,12 @@ services:
       BROWSER_WEB_URL: http://hoarder-chrome:9222
       # OPENAI_API_KEY: ...
       DATA_DIR: /data
+    labels:
+        - homepage.group=Misc.
+        - homepage.name=Hoarder
+        - homepage.icon=hoarder.png
+        - homepage.href=http://${SERVER_IP}:3000
+        - homepage.description=Bookmarker Manager      
   hoarder-chrome:
     image: gcr.io/zenika-hub/alpine-chrome:123
     restart: unless-stopped
