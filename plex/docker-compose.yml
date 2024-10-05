@@ -61,6 +61,8 @@ services:
         image: remirigal/plex-auto-languages:latest
         container_name: PlexAutoLanguages
         environment:
+        - PLEX_URL=http://plex:${PLEX_PORT1}
+        - PLEX_TOKEN=${PLEX_TOKEN}
         - TZ=${TZ}
         volumes:
         # make sure you have a file named 'config.yaml' in the 'config' dir
