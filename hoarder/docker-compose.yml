@@ -7,13 +7,15 @@ services:
       - ${DOCKER_PATH}/hoarder/data:/data
     ports:
       - ${WEB_PORT}:3000
-    env_file:
-      - stack.env # Portainer format
     environment:
-      MEILI_ADDR: http://hoarder-meilisearch:7700
-      BROWSER_WEB_URL: http://hoarder-chrome:9222
+        MEILI_ADDR: http://hoarder-meilisearch:7700
+        BROWSER_WEB_URL: http://hoarder-chrome:9222
       # OPENAI_API_KEY: ...
-      DATA_DIR: /data
+        DATA_DIR: /data
+      # Vars
+        HOARDER_VERSION: ${HOARDER_VERSION}
+        NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+        NEXTAUTH_URL: ${NEXTAUTH_URL}
     labels:
         - homepage.group=Misc.
         - homepage.name=Hoarder
@@ -35,9 +37,8 @@ services:
   hoarder-meilisearch:
     image: getmeili/meilisearch:v1.6
     restart: unless-stopped
-    env_file:
-      - stack.env # Portainer format
     environment:
       MEILI_NO_ANALYTICS: "true"
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
     volumes:
       - ${DOCKER_PATH}/hoarder/meilisearch:/meili_data
