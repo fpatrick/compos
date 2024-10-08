@@ -16,6 +16,7 @@ services:
         HOARDER_VERSION: ${HOARDER_VERSION}
         NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
         NEXTAUTH_URL: ${NEXTAUTH_URL}
+        MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
     labels:
         - homepage.group=Misc.
         - homepage.name=Hoarder
@@ -39,6 +40,5 @@ services:
     restart: unless-stopped
     environment:
       MEILI_NO_ANALYTICS: "true"
-      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
     volumes:
       - ${DOCKER_PATH}/hoarder/meilisearch:/meili_data
