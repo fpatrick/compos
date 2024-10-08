@@ -40,5 +40,6 @@ services:
     restart: unless-stopped
     environment:
       MEILI_NO_ANALYTICS: "true"
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
     volumes:
       - ${DOCKER_PATH}/hoarder/meilisearch:/meili_data
